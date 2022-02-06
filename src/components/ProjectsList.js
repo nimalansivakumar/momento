@@ -88,17 +88,18 @@ const ProjectsList = ({ setProjectRoutes }) => {
                 <div className="w-2/3 h-full flex flex-col items-start justify-center font-semibold mb:w-full">
                   <h3 className="text-2xl px-10 mb:px-5">{val.name}</h3>
                   <h5 className="text-sm px-10 text-gray-400 mb:px-5">
-                    2/6 Tasks Completed
+                    {`${val.completedTasks} / ${val.totalTasks}`} Tasks
+                    Completed
                   </h5>
                 </div>
                 <div className="w-1/3 h-full flex items-center justify-end mb:w-full items-center justify-around">
                   <div className="w-1/2 h-3 bg-gray-300 rounded">
                     <div
-                      style={{ width: "90px" }}
+                      style={{ width: `${val.progress}%` }}
                       className="h-full bg-green-300 rounded"
                     ></div>
                   </div>
-                  <h3 className="text-2xl">76%</h3>
+                  <h3 className="text-2xl">{val.progress}%</h3>
                 </div>
                 {/* <div className="w-1/4 h-full flex flex-row items-center justify-end  mb:w-full items-center justify-around">
                   <div className="w-10 h-10  flex items-center justify-center rounded-full transition hover:bg-red-100">

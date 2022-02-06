@@ -76,14 +76,24 @@ const ImplementationList = ({ user, projectName, impList, fetchDetails }) => {
                   {val.task}
                 </h4>
                 <div className="w-24 h-full flex justify-evenly items-center">
-                  <input
-                    className="border-2 border-red-200"
-                    type="checkbox"
-                    onChange={(e) => {
-                      changeStatus(e.target.checked, val._id);
-                    }}
-                    value={val.status}
-                  />
+                  {val.status ? (
+                    <input
+                      className="border-2 border-red-200"
+                      type="checkbox"
+                      onChange={(e) => {
+                        changeStatus(e.target.checked, val._id);
+                      }}
+                      checked
+                    />
+                  ) : (
+                    <input
+                      className="border-2 border-red-200"
+                      type="checkbox"
+                      onChange={(e) => {
+                        changeStatus(e.target.checked, val._id);
+                      }}
+                    />
+                  )}
                   <XCircleIcon className="w-6 text-red-400" />
                 </div>
               </li>

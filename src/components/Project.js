@@ -15,6 +15,7 @@ const Project = () => {
   const [impList, setImpList] = useState([]);
   const [resList, setResList] = useState([]);
   const [timeList, setTimeList] = useState([]);
+  const [progressBar, setProgressBar] = useState(0);
 
   useEffect(() => {
     fetchDetails();
@@ -22,9 +23,10 @@ const Project = () => {
 
   const fetchDetails = async () => {
     await axios.get(`/projects/info/${user.uid}/${id}`).then((res) => {
-      setImpList(res.data.implementationList);
-      setResList(res.data.resourceList);
-      setTimeList(res.data.timer);
+      setImpList(res.data.list.implementationList);
+      setResList(res.data.list.resourceList);
+      setTimeList(res.data.list.timer);
+      setProgressBar(res.data.bar );
     });
   };
 
@@ -34,7 +36,7 @@ const Project = () => {
         <h1 className="font-bold text-3xl">{id}</h1>
         <div className="w-1/3 h-3 bg-gray-300 rounded">
           <div
-            style={{ width: "90px" }}
+            style={{ width: `${progressBar}%` }}
             className="h-full bg-green-300 rounded"
           ></div>
         </div>

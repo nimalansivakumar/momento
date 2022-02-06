@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import {
   BookmarkIcon,
   ClipboardCopyIcon,
-  XIcon,
+  XCircleIcon,
 } from "@heroicons/react/outline";
 import { motion } from "framer-motion";
 import toast from "react-hot-toast";
@@ -41,7 +41,29 @@ const Resources = ({ user, projectName, resList, fetchDetails }) => {
     document.getElementById("resource-field").focus();
   };
 
-  const copyText = () => {};
+  const copyText = (text) => {
+    navigator.clipboard.writeText(text);
+    toast.success(<b>Copied</b>);
+  };
+
+  const deleteResource = async (id) => {
+    await toast
+      .promise(
+        axios.post(`/projects/info/deleteResource`, {
+          userid: user,
+          projectName: projectName,
+          res_id: id,
+        }),
+        {
+          loading: "Removing...",
+          success: <b>Removed.</b>,
+          error: <b>Could not remove!</b>,
+        }
+      )
+      .then(() => {
+        fetchDetails();
+      });
+  };
 
   return (
     <motion.div
@@ -80,9 +102,16 @@ const Resources = ({ user, projectName, resList, fetchDetails }) => {
                 <div className="w-20 h-full flex justify-evenly">
                   <ClipboardCopyIcon
                     className="w-6 text-amber-200"
-                    onClick={copyText}
+                    onClick={() => {
+                      copyText(val.resource);
+                    }}
                   />
-                  <XIcon className="w-6 text-red-400" />
+                  <XCircleIcon
+                    className="w-6 text-red-400"
+                    onClick={() => {
+                      deleteResource(val._id);
+                    }}
+                  />
                 </div>
               </li>
             ))

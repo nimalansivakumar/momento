@@ -34,9 +34,13 @@ const ImplementationList = ({ user, projectName, impList, fetchDetails }) => {
   };
 
   const changeStatus = async (isChecked, taskid) => {
-    if (isChecked) {
-      await axios.post("/projects/info/changeStatus", { taskid: taskid });
-    }
+    await axios.post("/projects/info/changeStatus", {
+      userid: user,
+      projectName: projectName,
+      taskid: taskid,
+      status: isChecked,
+    });
+    fetchDetails();
   };
 
   return (
@@ -53,7 +57,7 @@ const ImplementationList = ({ user, projectName, impList, fetchDetails }) => {
           id="task-field"
         />
         <button
-          className="w-20 h-10 rounded bg-blue-400 text-white mx-5"
+          className="w-20 h-10 rounded bg-blue-400 text-white mx-5 hover:bg-blue-500 transition"
           onClick={() => {
             addTask();
           }}
@@ -68,7 +72,9 @@ const ImplementationList = ({ user, projectName, impList, fetchDetails }) => {
                 key={key}
                 className="w-full h-10 rounded bg-gray-200 flex items-center justify-between p-5 my-2 cursor-pointer hover:bg-gray-300 transition"
               >
-                <h4 className="">{val.task}</h4>
+                <h4 className={`${val.status ? "line-through" : ""}`}>
+                  {val.task}
+                </h4>
                 <div className="w-24 h-full flex justify-evenly items-center">
                   <input
                     className="border-2 border-red-200"
@@ -76,6 +82,7 @@ const ImplementationList = ({ user, projectName, impList, fetchDetails }) => {
                     onChange={(e) => {
                       changeStatus(e.target.checked, val._id);
                     }}
+                    value={val.status}
                   />
                   <XCircleIcon className="w-6 text-red-400" />
                 </div>

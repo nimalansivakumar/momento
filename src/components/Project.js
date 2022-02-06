@@ -57,7 +57,7 @@ const Project = () => {
                     setCurrentTab("ImplementationList");
                   }}
                 >
-                  Implementation List
+                  Implementations
                 </li>
                 <li
                   className={`cursor-pointer ${

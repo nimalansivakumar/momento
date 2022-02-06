@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { TrashIcon, EyeIcon, PlusCircleIcon } from "@heroicons/react/outline";
+import { PlusCircleIcon } from "@heroicons/react/outline";
 import { Link } from "react-router-dom";
 import Modal from "react-modal";
 import toast from "react-hot-toast";
@@ -62,9 +62,6 @@ const ProjectsList = ({ setProjectRoutes }) => {
 
   const fetchProjects = async () => {
     await axios.get(`/projects/fetchProjects/${user.uid}`).then((res) => {
-      // let arr = [];
-      // console.log(arr.length);
-      console.log(res.data);
       if (res.data.length > 0) {
         setProjectList(res.data);
         setProjectRoutes(res.data);

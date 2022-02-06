@@ -23,10 +23,9 @@ const Project = () => {
 
   const fetchDetails = async () => {
     await axios.get(`/projects/info/${user.uid}/${id}`).then((res) => {
-      setImpList(res.data.list.implementationList);
-      setResList(res.data.list.resourceList);
-      setTimeList(res.data.list.timer);
-      setProgressBar(res.data.bar );
+      setImpList(res.data.implementationList);
+      setResList(res.data.resourceList);
+      setTimeList(res.data.timer);
     });
   };
 
@@ -34,12 +33,13 @@ const Project = () => {
     <div className="w-full h-full font-man text-dark">
       <div className="w-full h-20 flex flex-row justify-between flex flex-row items-center px-10 mb:flex-col">
         <h1 className="font-bold text-3xl">{id}</h1>
-        <div className="w-1/3 h-3 bg-gray-300 rounded">
+        {/* <div className="w-1/3 h-3 bg-gray-300 rounded">
           <div
             style={{ width: `${progressBar}%` }}
             className="h-full bg-green-300 rounded"
           ></div>
-        </div>
+        </div> */}
+        <button className="w-32 h-8 rounded bg-red-400 text-white hover:bg-red-500 transition">End Session</button>
       </div>
       <div className="w-full h-30rem flex justify-around items-center mb:flex-col h-full">
         <motion.div

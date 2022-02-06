@@ -104,7 +104,7 @@ const Timer = ({ user, projectName, timeList, fetchDetails }) => {
         </h1>
       </div>
       <div className="w-full h-2/3 bg-gray-200 flex flex-col items-center justify-center">
-        <ul className="w-full h-2/3 flex flex-col items-start px-5 font-semibold">
+        <ul className="w-full h-full flex flex-col items-start px-5 font-semibold  overflow-scroll scrollbar-hide">
           {timeList
             ? timeList.map((val, key) => (
                 <li
@@ -117,11 +117,6 @@ const Timer = ({ user, projectName, timeList, fetchDetails }) => {
               ))
             : null}
         </ul>
-        <div className="w-full h-1/3 flex flex-col items-center justify-center">
-          <button className="w-24 h-10 bg-blue-400 text-white font-semibold rounded">
-            See more
-          </button>
-        </div>
       </div>
       <div className="w-full h-1/3 flex justify-evenly items-center">
         {currentTimerState === false ? (

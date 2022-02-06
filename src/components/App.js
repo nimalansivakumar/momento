@@ -9,8 +9,6 @@ import Project from "./Project";
 import ProjectsList from "./ProjectsList";
 
 function App() {
-  const [projectRoutes, setProjectRoutes] = useState([]);
-
   return (
     <Router>
       <AuthProvider>
@@ -19,10 +17,7 @@ function App() {
         <Routes>
           <Route path="/" element={<Home />} />
           <Route element={<PrivateRoute />}>
-            <Route
-              path="/projects"
-              element={<ProjectsList setProjectRoutes={setProjectRoutes} />}
-            />
+            <Route path="/projects" element={<ProjectsList />} />
             <Route path="/projects/:id" element={<Project />} />
           </Route>
 

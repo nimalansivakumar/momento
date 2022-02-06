@@ -43,6 +43,25 @@ const ImplementationList = ({ user, projectName, impList, fetchDetails }) => {
     fetchDetails();
   };
 
+  const deleteTask = async (id) => {
+    await toast
+      .promise(
+        axios.post(`/projects/info/deleteTask`, {
+          userid: user,
+          projectName: projectName,
+          taskid: id,
+        }),
+        {
+          loading: "Removing Task...",
+          success: <b>Task Removed.</b>,
+          error: <b>Could not remove!</b>,
+        }
+      )
+      .then(() => {
+        fetchDetails();
+      });
+  };
+
   return (
     <motion.div
       initial={{ y: 100 }}
@@ -94,7 +113,12 @@ const ImplementationList = ({ user, projectName, impList, fetchDetails }) => {
                       }}
                     />
                   )}
-                  <XCircleIcon className="w-6 text-red-400" />
+                  <XCircleIcon
+                    className="w-6 text-red-400"
+                    onClick={() => {
+                      deleteTask(val._id);
+                    }}
+                  />
                 </div>
               </li>
             ))

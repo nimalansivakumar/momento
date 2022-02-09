@@ -75,16 +75,17 @@ const ProjectsList = () => {
         <h1 className="font-bold text-3xl px-10">Projects</h1>
         <button
           onClick={openModal}
-          className="w-36 h-10 mx-10 text-white bg-indigo-400 flex justify-evenly items-center rounded hover:bg-indigo-500 transition"
+          className="w-36 h-10 mx-10 text-white bg-indigo-400 flex justify-evenly items-center rounded hover:bg-indigo-500 transition mb:w-10"
         >
-          <PlusCircleIcon className="w-7" /> New Project
+          <PlusCircleIcon className="w-7" />
+          <p className="mb:hidden">New Project</p>
         </button>
       </div>
       {projectList.length !== 0 ? (
         projectList.map((val, key) => (
           <Link to={`/projects/${val.name}`} key={key}>
             <div className="w-full h-full flex flex-col justify-around items-center">
-              <div className="w-3/4 h-28 m-3 rounded bg-card flex flex-row hover:shadow-lg transition mb:flex-col">
+              <div className="w-3/4 h-28 m-3 rounded bg-card flex flex-row hover:shadow-lg transition mb:flex-col mb:w-5/6 mb:h-36">
                 <div className="w-2/3 h-full flex flex-col items-start justify-center font-semibold mb:w-full">
                   <h3 className="text-2xl px-10 mb:px-5">{val.name}</h3>
                   <h5 className="text-sm px-10 text-gray-400 mb:px-5">

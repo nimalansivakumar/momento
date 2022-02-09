@@ -29,7 +29,7 @@ const Navbar = () => {
   return (
     <nav className="w-full h-20 bg-transparent flex justify-between items-center font-man text-dark top-0">
       <div>
-        <img src={Logo} className="w-14 mx-10 " />
+        <img src={Logo} className="w-10 mx-10 " />
       </div>
       <ul className="w-1/4 h-auto font-man font-semibold flex justify-around items-center mb:hidden">
         <Link to="/dashboard">
@@ -53,7 +53,7 @@ const Navbar = () => {
         </li>
       </ul>
       {isOpen ? (
-        <XIcon onClick={closeMenu} className="w-10 mx-2 hidden mb:block" />
+        <XIcon onClick={closeMenu} className="w- mx-2 hidden mb:block" />
       ) : (
         <MenuAlt2Icon
           onClick={openMenu}

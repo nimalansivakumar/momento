@@ -53,7 +53,7 @@ const Navbar = () => {
         </li>
       </ul>
       {isOpen ? (
-        <XIcon onClick={closeMenu} className="w- mx-2 hidden mb:block" />
+        <XIcon onClick={closeMenu} className="w-10 mx-2 hidden mb:block" />
       ) : (
         <MenuAlt2Icon
           onClick={openMenu}

@@ -103,6 +103,7 @@ const ImplementationList = ({ user, projectName, impList, fetchDetails }) => {
                         changeStatus(e.target.checked, val._id);
                       }}
                       checked
+                      disabled
                     />
                   ) : (
                     <input

@@ -84,7 +84,7 @@ const ProjectsList = () => {
         projectList.map((val, key) => (
           <Link to={`/projects/${val.name}`} key={key}>
             <div className="w-full h-full flex flex-col justify-around items-center">
-              <div className="w-3/4 h-28 m-3 bg-card rounded-md shadow-lg flex flex-row cursor-pointer transform transition duration-300 mb:flex-col w-5/6  hover:shadow-xl">
+              <div className="w-3/4 h-28 m-3 rounded bg-card flex flex-row hover:shadow-lg transition mb:flex-col">
                 <div className="w-2/3 h-full flex flex-col items-start justify-center font-semibold mb:w-full">
                   <h3 className="text-2xl px-10 mb:px-5">{val.name}</h3>
                   <h5 className="text-sm px-10 text-gray-400 mb:px-5">
@@ -92,7 +92,7 @@ const ProjectsList = () => {
                     Completed
                   </h5>
                 </div>
-                <div className="w-1/3 h-full flex items-center justify-end mb:w-full items-center justify-around">
+                <div className="w-1/3 h-full flex items-center justify-end mb:w-full items-center justify-around mb:w-full">
                   <div className="w-1/2 h-3 bg-gray-300 rounded">
                     <div
                       style={{ width: `${val.progress}%` }}

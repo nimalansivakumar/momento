@@ -96,7 +96,7 @@ const Timer = ({ user, projectName, timeList, fetchDetails }) => {
       initial={{ x: 250 }}
       animate={{ x: 0 }}
       transition={{ delay: "0.4s" }}
-      className="w-2/6 m-10 h-full bg-card flex flex-col items-center justify-center rounded shadow-xl mb:w-5/6"
+      className="w-2/6 m-10 h-full bg-card flex flex-col items-center justify-around rounded shadow-xl mb:w-5/6 h-30rem"
     >
       <div className="w-full h-1/3 flex items-center justify-center">
         <h1 className="text-5xl font-black">

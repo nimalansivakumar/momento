@@ -31,26 +31,22 @@ const Project = () => {
 
   return (
     <div className="w-full h-full font-man text-dark">
-      <div className="w-full h-20 flex flex-row justify-between flex flex-row items-center px-10 mb:flex-col">
+      <div className="w-full h-20 flex flex-row justify-between items-center px-10 mb:flex-col">
         <h1 className="font-bold text-3xl">{id}</h1>
-        {/* <div className="w-1/3 h-3 bg-gray-300 rounded">
-          <div
-            style={{ width: `${progressBar}%` }}
-            className="h-full bg-green-300 rounded"
-          ></div>
-        </div> */}
-        <button className="w-32 h-8 rounded bg-red-400 text-white hover:bg-red-500 transition">End Session</button>
+        <button className="w-32 h-8 rounded bg-red-400 text-white hover:bg-red-500 transition">
+          End Session
+        </button>
       </div>
-      <div className="w-full h-30rem flex justify-around items-center mb:flex-col h-full">
+      <div className="w-full h-30rem flex justify-around items-center mb:h-auto mb:flex-col">
         <motion.div
           initial={{ x: -250 }}
           animate={{ x: 0 }}
           transition={{ delay: "0.4s" }}
-          className="w-4/6 m-10 h-full bg-card rounded shadow-xl mb:w-5/6"
+          className="w-4/6 m-10 h-full bg-card rounded shadow-xl mb:w-5/6 "
         >
-          <div className="w-full h-12 flex items-center">
-            <nav className="w-3/4 font-semibold text-xl px-5">
-              <motion.ul className="flex flex-row justify-around">
+          <div className="w-full h-12 flex items-center mb:h-auto">
+            <nav className="w-full font-semibold text-xl px-5">
+              <motion.ul className="w-full flex flex-row justify-around mb:flex-col items-center">
                 <li
                   className={`cursor-pointer ${
                     currentTab === "ImplementationList" ? "" : "text-gray-400"

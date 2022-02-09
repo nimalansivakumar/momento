@@ -77,26 +77,26 @@ const Resources = ({ user, projectName, resList, fetchDetails }) => {
           type="url"
           id="resource-field"
           placeholder="Type or paste the link..."
-          className="w-3/4 h-10 rounded outline-none px-3 focus:ring"
+          className="w-full h-10 rounded outline-none px-3 focus:ring"
         />
         <button
           onClick={() => {
             addResource();
           }}
-          className="w-40 h-10 rounded bg-indigo-500 text-white mx-5 flex items-center justify-evenly hover:bg-indigo-600 transition"
+          className="w-48 h-10 rounded bg-indigo-500 text-white mx-5 flex items-center justify-evenly hover:bg-indigo-600 transition mb:w-12"
         >
           <BookmarkIcon className="w-7" />
-          Add Bookmark
+          <p className="mb:hidden">Add Bookmark</p>
         </button>
       </div>
-      <ol className="w-full h-3/4 flex flex-col items-start px-5 overflow-scroll  scrollbar-hide">
+      <ol className="w-full h-3/4 flex flex-col items-start px-5 overflow-scroll scrollbar-hide">
         {resList
           ? resList.map((val, key) => (
               <li
                 key={key}
-                className="w-full h-10 my-1 rounded bg-gray-200 flex items-center justify-between px-5 my-2 cursor-pointer hover:bg-gray-300 transition"
+                className="w-full h-10 rounded bg-gray-200 flex items-center justify-between px-5 my-2 cursor-pointer hover:bg-gray-300 transition mb:h-28 break-all"
               >
-                <a href={`${val.resource}`} target="_blank" className="">
+                <a href={`${val.resource}`} target="_blank" className="mb:w-full">
                   {val.resource}
                 </a>
                 <div className="w-20 h-full flex justify-evenly">

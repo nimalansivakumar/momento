@@ -72,7 +72,7 @@ const ImplementationList = ({ user, projectName, impList, fetchDetails }) => {
       <div className="w-full h-16 flex items-center px-5">
         <input
           placeholder="Add something to be implemented..."
-          className="w-1/2 h-10 rounded outline-none px-3 focus:ring"
+          className="w-full h-10 rounded outline-none px-3 focus:ring"
           id="task-field"
         />
         <button
@@ -84,12 +84,12 @@ const ImplementationList = ({ user, projectName, impList, fetchDetails }) => {
           Add
         </button>
       </div>
-      <ol className="w-full h-3/4 flex flex-col items-start px-5 overflow-scroll  scrollbar-hide">
+      <ol className="w-full h-3/4 flex flex-col items-start px-5 overflow-scroll scrollbar-hide">
         {impList
           ? impList.map((val, key) => (
               <li
                 key={key}
-                className="w-full h-10 rounded bg-gray-200 flex items-center justify-between p-5 my-2 cursor-pointer hover:bg-gray-300 transition"
+                className="w-full h-10 rounded bg-gray-200 flex items-center justify-between p-5 my-2 cursor-pointer hover:bg-gray-300 transition mb:h-auto"
               >
                 <h4 className={`${val.status ? "line-through" : ""}`}>
                   {val.task}

@@ -17,8 +17,6 @@ const Timer = ({ user, projectName, timeList, fetchDetails }) => {
   const [hours, setHours] = useState(0);
 
   const saveTimer = async () => {
-    let time = `${hours}h:${minutes}m:${seconds}s`;
-
     const today = () => {
       return new Date().toLocaleDateString("en-us", {
         month: "long",
@@ -31,7 +29,9 @@ const Timer = ({ user, projectName, timeList, fetchDetails }) => {
       axios.post("/projects/info/timer", {
         userid: user,
         projectName: projectName,
-        time: time,
+        hours,
+        minutes,
+        seconds,
         date: today(),
       }),
       {
@@ -112,7 +112,7 @@ const Timer = ({ user, projectName, timeList, fetchDetails }) => {
                   className="w-full h-10 my-1 rounded bg-gray-200 flex items-center justify-between px-5 my-2"
                 >
                   <h4 className="">{val.work_day}</h4>
-                  <h4>{val.work_time}</h4>
+                  <h4>{`${val.hours}h : ${val.minutes}m : ${val.seconds}s`}</h4>
                 </li>
               ))
             : null}

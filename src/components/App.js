@@ -7,6 +7,7 @@ import { Toaster } from "react-hot-toast";
 import PrivateRoute from "../routes/PrivateRoute";
 import Project from "./Project";
 import ProjectsList from "./ProjectsList";
+import Dashboard from "./Dashboard";
 
 function App() {
   return (
@@ -17,6 +18,7 @@ function App() {
         <Routes>
           <Route path="/" element={<Home />} />
           <Route element={<PrivateRoute />}>
+            <Route path="/dashboard" element={<Dashboard />} />
             <Route path="/projects" element={<ProjectsList />} />
             <Route path="/projects/:id" element={<Project />} />
           </Route>

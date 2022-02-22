@@ -26,7 +26,7 @@ const Timer = ({ user, projectName, timeList, fetchDetails }) => {
     };
 
     toast.promise(
-      axios.post("/projects/info/timer", {
+      axios.post("https://momento-heroku.herokuapp.com/projects/info/timer", {
         userid: user,
         projectName: projectName,
         hours,
@@ -104,7 +104,7 @@ const Timer = ({ user, projectName, timeList, fetchDetails }) => {
         </h1>
       </div>
       <div className="w-full h-2/3 bg-gray-200 flex flex-col items-center justify-center">
-        <ul className="w-full h-full flex flex-col-reverse items-start px-5 font-semibold  overflow-scroll scrollbar-hide">
+        <ul className="w-full h-full flex flex-col-reverse justify-end items-center px-5 font-semibold  overflow-scroll scrollbar-hide">
           {timeList
             ? timeList.map((val, key) => (
                 <li

@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Navbar from "./Navbar";
 import Home from "./Home";
@@ -8,6 +8,7 @@ import PrivateRoute from "../routes/PrivateRoute";
 import Project from "./Project";
 import ProjectsList from "./ProjectsList";
 import Dashboard from "./Dashboard";
+import Leaderboard from "./Leaderboard";
 
 function App() {
   return (
@@ -21,11 +22,8 @@ function App() {
             <Route path="/dashboard" element={<Dashboard />} />
             <Route path="/projects" element={<ProjectsList />} />
             <Route path="/projects/:id" element={<Project />} />
+            <Route path="/leaderboard" element={<Leaderboard />} />
           </Route>
-
-          {/* {projectRoutes.map((val) => (
-            <Route path={`/projects/MERN%20Project`} element={<Project />} />
-          ))} */}
         </Routes>
       </AuthProvider>
     </Router>

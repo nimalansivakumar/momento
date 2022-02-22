@@ -30,19 +30,19 @@ const Navbar = () => {
     <nav className="w-full h-20 bg-transparent flex justify-between items-center font-man text-dark top-0">
       <div>
         <Link to="/">
-          <img src={Logo} className="w-10 mx-10 " />
+          <img src={Logo} alt="logo" className="w-10 mx-10 " />
         </Link>
       </div>
-      <ul className="w-1/3 h-auto font-man font-semibold flex justify-around items-center mb:hidden">
+      <ul className="w-1/2 h-auto font-man font-semibold flex justify-around items-center mb:hidden">
         <Link to="/dashboard">
           <li>Dashboard</li>
         </Link>
         <Link to="/projects">
           <li>Projects</li>
         </Link>
-        {/* <li>
-          <img src={Logo} className="w-10" />
-        </li> */}
+        <Link to="/leaderboard">
+          <li>Leaderboard</li>
+        </Link>
         <li className="mb:hidden">
           {isloggedin ? (
             <button
@@ -75,6 +75,9 @@ const Navbar = () => {
             </Link>
             <Link to="/projects">
               <li>Projects</li>
+            </Link>
+            <Link to="/leaderboard">
+              <li>Leaderboard</li>
             </Link>
             <li className="mb:block">
               {isloggedin ? (

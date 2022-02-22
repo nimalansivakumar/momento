@@ -1,5 +1,5 @@
 import { motion } from "framer-motion";
-import React, { useState } from "react";
+import React from "react";
 import { toast } from "react-hot-toast";
 import { XCircleIcon } from "@heroicons/react/outline";
 import axios from "axios";
@@ -11,7 +11,7 @@ const ImplementationList = ({ user, projectName, impList, fetchDetails }) => {
     if (taskName.length > 0) {
       await toast.promise(
         axios
-          .post("/projects/info/impList", {
+          .post("https://momento-heroku.herokuapp.com/projects/info/impList", {
             userid: user,
             projectName: projectName,
             task: taskName,
@@ -34,19 +34,22 @@ const ImplementationList = ({ user, projectName, impList, fetchDetails }) => {
   };
 
   const changeStatus = async (isChecked, taskid) => {
-    await axios.post("/projects/info/changeStatus", {
-      userid: user,
-      projectName: projectName,
-      taskid: taskid,
-      status: isChecked,
-    });
+    await axios.post(
+      "https://momento-heroku.herokuapp.com/projects/info/changeStatus",
+      {
+        userid: user,
+        projectName: projectName,
+        taskid: taskid,
+        status: isChecked,
+      }
+    );
     fetchDetails();
   };
 
   const deleteTask = async (id) => {
     await toast
       .promise(
-        axios.post(`/projects/info/deleteTask`, {
+        axios.post(`https://momento-heroku.herokuapp.com/projects/info/deleteTask`, {
           userid: user,
           projectName: projectName,
           taskid: id,

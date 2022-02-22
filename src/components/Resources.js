@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import {
   BookmarkIcon,
   ClipboardCopyIcon,
@@ -13,13 +13,13 @@ const Resources = ({ user, projectName, resList, fetchDetails }) => {
     const url = document.getElementById("resource-field").value;
 
     var expression =
-      /https?:\/\/(www\.)?[-a-zA-Z0-9@:%._\+~#=]{1,256}\.[a-zA-Z0-9()]{1,6}\b([-a-zA-Z0-9()@:%_\+.~#?&//=]*)/;
+      "/https?://(www.)?[-a-zA-Z0-9@:%._+~#=]{1,256}.[a-zA-Z0-9()]{1,6}\b([-a-zA-Z0-9()@:%_+.~#?&//=]*)/";
     var regex = new RegExp(expression);
 
     if (url.match(regex)) {
       await toast.promise(
         axios
-          .post("/projects/info/resList", {
+          .post("https://momento-heroku.herokuapp.com/projects/info/resList", {
             userid: user,
             projectName: projectName,
             resource: url,
@@ -49,7 +49,7 @@ const Resources = ({ user, projectName, resList, fetchDetails }) => {
   const deleteResource = async (id) => {
     await toast
       .promise(
-        axios.post(`/projects/info/deleteResource`, {
+        axios.post(`https://momento-heroku.herokuapp.com/projects/info/deleteResource`, {
           userid: user,
           projectName: projectName,
           res_id: id,
@@ -96,7 +96,12 @@ const Resources = ({ user, projectName, resList, fetchDetails }) => {
                 key={key}
                 className="w-full h-10 rounded bg-gray-200 flex items-center justify-between px-5 my-2 cursor-pointer hover:bg-gray-300 transition mb:h-28 break-all"
               >
-                <a href={`${val.resource}`} target="_blank" className="mb:w-full">
+                <a
+                  href={`${val.resource}`}
+                  target="_blank"
+                  rel="noreferrer"
+                  className="mb:w-full"
+                >
                   {val.resource}
                 </a>
                 <div className="w-20 h-full flex justify-evenly">

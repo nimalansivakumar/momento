@@ -15,14 +15,13 @@ const Project = () => {
   const [impList, setImpList] = useState([]);
   const [resList, setResList] = useState([]);
   const [timeList, setTimeList] = useState([]);
-  const [progressBar, setProgressBar] = useState(0);
 
   useEffect(() => {
     fetchDetails();
   }, []);
 
   const fetchDetails = async () => {
-    await axios.get(`/projects/info/${user.uid}/${id}`).then((res) => {
+    await axios.get(`https://momento-heroku.herokuapp.com/projects/info/${user.uid}/${id}`).then((res) => {
       setImpList(res.data.implementationList);
       setResList(res.data.resourceList);
       setTimeList(res.data.timer);
@@ -66,16 +65,6 @@ const Project = () => {
                   }}
                 >
                   Resources
-                </li>
-                <li
-                  className={`cursor-pointer ${
-                    currentTab === "Others" ? "" : "text-gray-400"
-                  }`}
-                  onClick={() => {
-                    setCurrentTab("Others");
-                  }}
-                >
-                  Others
                 </li>
               </motion.ul>
             </nav>

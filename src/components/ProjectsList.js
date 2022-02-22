@@ -39,11 +39,23 @@ const ProjectsList = () => {
     setOpen(false);
   };
 
+  useEffect(() => {
+    fetchProjects();
+  }, []);
+
+  const fetchProjects = async () => {
+    await axios.get(`https://momento-heroku.herokuapp.com/projects/fetchProjects/${user.uid}`).then((res) => {
+      if (res.data.length > 0) {
+        setProjectList(res.data);
+      }
+    });
+  };
+
   const createProject = async () => {
     let projectName = document.getElementById("project-name-field").value;
     await toast
       .promise(
-        axios.post("/projects/createProject", { id: user.uid, projectName }),
+        axios.post("https://momento-heroku.herokuapp.com/projects/createProject", { id: user.uid, projectName }),
         {
           loading: "Creating Project...",
           success: <b>Created Successfully!</b>,
@@ -51,22 +63,9 @@ const ProjectsList = () => {
         }
       )
       .then(() => {
-        setOpen(false);
         fetchProjects();
+        setOpen(false);
       });
-  };
-
-  useEffect(() => {
-    fetchProjects();
-  }, []);
-
-  const fetchProjects = async () => {
-    await axios.get(`/projects/fetchProjects/${user.uid}`).then((res) => {
-      console.log(res.data);
-      if (res.data.length > 0) {
-        setProjectList(res.data);
-      }
-    });
   };
 
   return (

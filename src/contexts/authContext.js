@@ -13,20 +13,20 @@ export function AuthProvider({ children }) {
   const [user, setUser] = useState();
   const [isloggedin, setStatus] = useState(false);
 
-  const signup = async ({ firstname, lastname, email, password }) => {
-    return await auth.createUserWithEmailAndPassword(email, password);
-  };
+  // const signup = async ({ firstname, lastname, email, password }) => {
+  //   return await auth.createUserWithEmailAndPassword(email, password);
+  // };
 
-  const login = async (email, password) => {
-    return await auth.signInWithEmailAndPassword(email, password);
-  };
+  // const login = async (email, password) => {
+  //   return await auth.signInWithEmailAndPassword(email, password);
+  // };
 
   const signUpWithGoogle = async () => {
     await auth.signInWithRedirect(provider);
   };
 
   const logout = async () => {
-    return await auth.signOut();
+    await auth.signOut();
   };
 
   useEffect(() => {
@@ -34,7 +34,10 @@ export function AuthProvider({ children }) {
       if (user) {
         setUser(user);
         setStatus(true);
-        await axios.post("/authenticate", user);
+        await axios.post(
+          "https://momento-heroku.herokuapp.com/authenticate",
+          user
+        );
       } else {
         setStatus(false);
       }
@@ -46,8 +49,6 @@ export function AuthProvider({ children }) {
   const value = {
     user,
     isloggedin,
-    signup,
-    login,
     signUpWithGoogle,
     logout,
   };

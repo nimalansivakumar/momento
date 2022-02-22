@@ -67,6 +67,7 @@ const Dashboard = () => {
     const text =
       "My Stats using Momento:" +
       "%0A" +
+      "%0A" +
       `Projects Completed: ${stats.no_of_projects}` +
       "%0A" +
       `Total Time Spent: ${stats.total_time_spent}` +
@@ -74,7 +75,7 @@ const Dashboard = () => {
       `Leaderboard Rank: ${stats.rank}` +
       "%0A" +
       "%0A" +
-      `Start and work with your project on Momento`;
+      `Start and work with your project on https://momento-app.netlify.app/`;
 
     setWebIntent(`https://twitter.com/intent/tweet?text=${text}`);
   };

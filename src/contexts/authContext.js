@@ -13,16 +13,10 @@ export function AuthProvider({ children }) {
   const [user, setUser] = useState();
   const [isloggedin, setStatus] = useState(false);
 
-  // const signup = async ({ firstname, lastname, email, password }) => {
-  //   return await auth.createUserWithEmailAndPassword(email, password);
-  // };
-
-  // const login = async (email, password) => {
-  //   return await auth.signInWithEmailAndPassword(email, password);
-  // };
-
   const signUpWithGoogle = async () => {
-    await auth.signInWithRedirect(provider);
+    await auth.signInWithRedirect(provider).catch((err) => {
+      console.log(err);
+    });
   };
 
   const logout = async () => {

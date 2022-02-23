@@ -2,7 +2,7 @@ import React, { useContext, createContext, useState, useEffect } from "react";
 import { auth, provider } from "../firebase/firebaseConfig";
 import "firebase/compat/app";
 import axios from "axios";
-
+  
 const AuthContext = createContext();
 
 export const useAuth = () => {

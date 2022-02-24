@@ -121,9 +121,9 @@ const ProjectsList = () => {
             initial={{ y: 100 }}
             animate={{ y: 0 }}
             transition={{ delay: "0.4s" }}
-            className="w-full h-full flex flex-row bg-blue-100 justify-around items-center"
+            className="w-full h-full flex flex-row justify-around items-center"
           >
-            <div className="w-3/4 h-28 m-3 bg-red-100 rounded bg-card flex flex-row bg-red-100 hover:shadow-lg transition mb:flex-col mb:w-5/6 mb:h-44">
+            <div className="w-3/4 h-28 m-3 rounded bg-card flex flex-row hover:shadow-lg transition mb:flex-col mb:w-5/6 mb:h-44">
               <Link
                 to={`/projects/${val.name}`}
                 className="w-5/6 h-full flex mb:flex-col w-full"

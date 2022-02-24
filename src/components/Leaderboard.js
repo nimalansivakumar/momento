@@ -4,6 +4,7 @@ import toast from "react-hot-toast";
 import { useAuth } from "../contexts/authContext";
 import userImg from "../assets/user.png";
 import Loader from "./Loader";
+import { motion } from "framer-motion";
 
 const Leaderboard = () => {
   const { user } = useAuth();
@@ -12,8 +13,6 @@ const Leaderboard = () => {
 
   useEffect(() => {
     const fetchLeaderboard = async () => {
-
-      
       setLoading(true);
       await axios
         .get(`https://momento-heroku.herokuapp.com/leaderboard/${user.uid}`)
@@ -42,7 +41,10 @@ const Leaderboard = () => {
               <Loader />
             ) : (
               leaderboardList.map((val, key) => (
-                <li
+                <motion.li
+                  initial={{ y: 100 }}
+                  animate={{ y: 0 }}
+                  transition={{ delay: "0.4s" }}
                   key={key}
                   className="w-11/12 h-12 my-2 bg-card rounded-xl flex flex-row items-center justify-between px-10  mb:h-20"
                 >
@@ -68,7 +70,7 @@ const Leaderboard = () => {
                     </div>
                   </div>
                   <h1 className="w-1/3 text-right">{val.projectsDone}</h1>
-                </li>
+                </motion.li>
               ))
             )
           ) : null}

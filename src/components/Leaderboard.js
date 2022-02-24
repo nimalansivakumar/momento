@@ -3,23 +3,24 @@ import React, { useEffect, useState } from "react";
 import toast from "react-hot-toast";
 import { useAuth } from "../contexts/authContext";
 import userImg from "../assets/user.png";
+import Loader from "./Loader";
 
 const Leaderboard = () => {
   const { user } = useAuth();
   const [leaderboardList, setLeaderboard] = useState([]);
+  const [loading, setLoading] = useState(false);
 
   useEffect(() => {
     const fetchLeaderboard = async () => {
-      await toast.promise(
-        axios.get(`https://momento-heroku.herokuapp.com/leaderboard/${user.uid}`).then((res) => {
+
+      
+      setLoading(true);
+      await axios
+        .get(`https://momento-heroku.herokuapp.com/leaderboard/${user.uid}`)
+        .then((res) => {
           setLeaderboard(res.data);
-        }),
-        {
-          loading: "Fetching Leaderboard...",
-          success: <b>Fetched Successfully!</b>,
-          error: <b>Could not fetch</b>,
-        }
-      );
+          setLoading(false);
+        });
     };
     fetchLeaderboard();
   }, []);
@@ -36,8 +37,11 @@ const Leaderboard = () => {
             <h1 className="w-1/3 text-center">Name</h1>
             <h1 className="w-1/3 text-right">Projects Completed</h1>
           </li>
-          {leaderboardList
-            ? leaderboardList.map((val, key) => (
+          {leaderboardList ? (
+            loading ? (
+              <Loader />
+            ) : (
+              leaderboardList.map((val, key) => (
                 <li
                   key={key}
                   className="w-11/12 h-12 my-2 bg-card rounded-xl flex flex-row items-center justify-between px-10  mb:h-20"
@@ -66,7 +70,8 @@ const Leaderboard = () => {
                   <h1 className="w-1/3 text-right">{val.projectsDone}</h1>
                 </li>
               ))
-            : null}
+            )
+          ) : null}
         </ul>
       </div>
     </div>

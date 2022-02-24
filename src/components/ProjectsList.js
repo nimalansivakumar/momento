@@ -5,6 +5,8 @@ import Modal from "react-modal";
 import toast from "react-hot-toast";
 import axios from "axios";
 import { useAuth } from "../contexts/authContext";
+import Loader from "./Loader";
+import { motion } from "framer-motion";
 
 const customStyles = {
   content: {
@@ -30,6 +32,7 @@ const ProjectsList = () => {
   const [isOpen, setOpen] = useState(false);
   const { user } = useAuth();
   const [projectList, setProjectList] = useState([]);
+  const [loading, setLoading] = useState(false);
 
   const openModal = () => {
     setOpen(true);
@@ -44,18 +47,27 @@ const ProjectsList = () => {
   }, []);
 
   const fetchProjects = async () => {
-    await axios.get(`https://momento-heroku.herokuapp.com/projects/fetchProjects/${user.uid}`).then((res) => {
-      if (res.data.length > 0) {
-        setProjectList(res.data);
-      }
-    });
+    setLoading(true);
+    await axios
+      .get(
+        `https://momento-heroku.herokuapp.com/projects/fetchProjects/${user.uid}`
+      )
+      .then((res) => {
+        if (res.data.length > 0) {
+          setProjectList(res.data);
+        }
+        setLoading(false);
+      });
   };
 
   const createProject = async () => {
     let projectName = document.getElementById("project-name-field").value;
     await toast
       .promise(
-        axios.post("https://momento-heroku.herokuapp.com/projects/createProject", { id: user.uid, projectName }),
+        axios.post(
+          "https://momento-heroku.herokuapp.com/projects/createProject",
+          { id: user.uid, projectName }
+        ),
         {
           loading: "Creating Project...",
           success: <b>Created Successfully!</b>,
@@ -81,39 +93,46 @@ const ProjectsList = () => {
         </button>
       </div>
       {projectList.length !== 0 ? (
-        projectList.map((val, key) => (
-          <Link to={`/projects/${val.name}`} key={key}>
-            <div className="w-full h-full flex flex-col justify-around items-center">
-              <div className="w-3/4 h-28 m-3 rounded bg-card flex flex-row hover:shadow-lg transition mb:flex-col mb:w-5/6 mb:h-36">
-                <div className="w-2/3 h-full flex flex-col items-start justify-center font-semibold mb:w-full">
-                  <h3 className="text-2xl px-10 mb:px-5">{val.name}</h3>
-                  <h5 className="text-sm px-10 text-gray-400 mb:px-5">
-                    {`${val.completedTasks} / ${val.totalTasks}`} Tasks
-                    Completed
-                  </h5>
-                </div>
-                <div className="w-1/3 h-full flex items-center justify-end mb:w-full items-center justify-around mb:w-full">
-                  <div className="w-1/2 h-3 bg-gray-300 rounded">
-                    <div
-                      style={{ width: `${val.progress}%` }}
-                      className="h-full bg-green-300 rounded"
-                    ></div>
+        loading ? (
+          <Loader />
+        ) : (
+          projectList.map((val, key) => (
+            <Link to={`/projects/${val.name}`} key={key}>
+              <motion.div
+                initial={{ y: 100 }}
+                animate={{ y: 0 }}
+                transition={{ delay: "0.4s" }}
+                className="w-full h-full flex flex-col justify-around items-center"
+              >
+                <div className="w-3/4 h-28 m-3 rounded bg-card flex flex-row hover:shadow-lg transition mb:flex-col mb:w-5/6 mb:h-36">
+                  <div className="w-2/3 h-full flex flex-col items-start justify-center font-semibold mb:w-full">
+                    <h3 className="text-2xl px-10 mb:px-5">{val.name}</h3>
+                    <h5 className="text-sm px-10 text-gray-400 mb:px-5">
+                      {`${val.completedTasks} / ${val.totalTasks}`} Tasks
+                      Completed
+                    </h5>
                   </div>
-                  <h3 className="text-2xl">{val.progress}%</h3>
-                </div>
-                {/* <div className="w-1/4 h-full flex flex-row items-center justify-end  mb:w-full items-center justify-around">
-                  <div className="w-10 h-10  flex items-center justify-center rounded-full transition hover:bg-red-100">
-                    <TrashIcon className="w-7 text-red-500" />
+                  <div className="w-1/3 h-full flex items-center justify-end mb:w-full items-center justify-around mb:w-full">
+                    <div className="w-1/2 h-3 bg-gray-300 rounded">
+                      <div
+                        style={{ width: `${val.progress}%` }}
+                        className="h-full bg-green-300 rounded"
+                      ></div>
+                    </div>
+                    <h3 className="text-2xl">{val.progress}%</h3>
                   </div>
-                </div> */}
-              </div>
-            </div>
-          </Link>
-        ))
+                  {/* <div className="w-1/4 h-full flex flex-row items-center justify-end  mb:w-full items-center justify-around">
+                <div className="w-10 h-10  flex items-center justify-center rounded-full transition hover:bg-red-100">
+                  <TrashIcon className="w-7 text-red-500" />
+                </div>
+              </div> */}
+                </div>
+              </motion.div>
+            </Link>
+          ))
+        )
       ) : (
-        <div className="w-full h-full text-center font-semibold">
-          <h1>No Projects Found!</h1>
-        </div>
+        <Loader />
       )}
       <Modal
         isOpen={isOpen}

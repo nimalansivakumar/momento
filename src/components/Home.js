@@ -5,13 +5,13 @@ import { useAuth } from "../contexts/authContext";
 import toast from "react-hot-toast";
 import peeps from "../assets/peeps.svg";
 import nimalan from "../assets/nimalan.jpeg";
-import Loader from "./Loader";
 
 export default function Home() {
   const { isloggedin, signUpWithGoogle } = useAuth();
 
   const handleGoogleAuth = (e) => {
     e.preventDefault();
+
     toast.promise(signUpWithGoogle(), {
       loading: "Logging In...",
       success: <b>Logged in Successfully!</b>,

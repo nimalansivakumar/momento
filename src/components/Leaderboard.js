@@ -1,6 +1,5 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
-import toast from "react-hot-toast";
 import { useAuth } from "../contexts/authContext";
 import userImg from "../assets/user.png";
 import Loader from "./Loader";

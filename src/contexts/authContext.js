@@ -2,7 +2,7 @@ import React, { useContext, createContext, useState, useEffect } from "react";
 import { auth, provider } from "../firebase/firebaseConfig";
 import "firebase/compat/app";
 import axios from "axios";
-  
+
 const AuthContext = createContext();
 
 export const useAuth = () => {
@@ -25,9 +25,11 @@ export function AuthProvider({ children }) {
 
   useEffect(() => {
     const unsubscribe = auth.onAuthStateChanged(async (user) => {
+      setProcessing(true);
       if (user) {
         setUser(user);
         setStatus(true);
+        setProcessing(false);
         await axios.post(
           "https://momento-heroku.herokuapp.com/authenticate",
           user
@@ -43,6 +45,7 @@ export function AuthProvider({ children }) {
   const value = {
     user,
     isloggedin,
+    processing,
     signUpWithGoogle,
     logout,
   };

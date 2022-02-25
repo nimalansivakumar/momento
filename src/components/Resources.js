@@ -13,7 +13,8 @@ const Resources = ({ user, projectName, resList, fetchDetails }) => {
     const url = document.getElementById("resource-field").value;
 
     var expression =
-      "/https?://(www.)?[-a-zA-Z0-9@:%._+~#=]{1,256}.[a-zA-Z0-9()]{1,6}\b([-a-zA-Z0-9()@:%_+.~#?&//=]*)/";
+      /[-a-zA-Z0-9@:%._\+~#=]{1,256}\.[a-zA-Z0-9()]{1,6}\b([-a-zA-Z0-9()@:%_\+.~#?&//=]*)/;
+
     var regex = new RegExp(expression);
 
     if (url.match(regex)) {
@@ -49,11 +50,14 @@ const Resources = ({ user, projectName, resList, fetchDetails }) => {
   const deleteResource = async (id) => {
     await toast
       .promise(
-        axios.post(`https://momento-heroku.herokuapp.com/projects/info/deleteResource`, {
-          userid: user,
-          projectName: projectName,
-          res_id: id,
-        }),
+        axios.post(
+          `https://momento-heroku.herokuapp.com/projects/info/deleteResource`,
+          {
+            userid: user,
+            projectName: projectName,
+            res_id: id,
+          }
+        ),
         {
           loading: "Removing...",
           success: <b>Removed.</b>,

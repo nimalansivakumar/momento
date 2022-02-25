@@ -25,11 +25,9 @@ export function AuthProvider({ children }) {
 
   useEffect(() => {
     const unsubscribe = auth.onAuthStateChanged(async (user) => {
-      setProcessing(true);
       if (user) {
         setUser(user);
         setStatus(true);
-        setProcessing(false);
         await axios.post(
           "https://momento-heroku.herokuapp.com/authenticate",
           user
@@ -45,7 +43,6 @@ export function AuthProvider({ children }) {
   const value = {
     user,
     isloggedin,
-    processing,
     signUpWithGoogle,
     logout,
   };

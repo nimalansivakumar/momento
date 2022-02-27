@@ -32,7 +32,7 @@ export default function Home() {
         }}
       >
         <motion.div
-          className="w-full h-36 text-center flex flex-col justify-around items-center"
+          className="w-full h-36 text-center flex flex-col justify-around items-center mb:h-56"
           initial={{ y: -250 }}
           animate={{ y: 0 }}
           transition={{ delay: "0.4s" }}

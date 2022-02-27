@@ -1,51 +1,43 @@
-# Create React App + Tailwind CSS 
-
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
-
-[Setting up Tailwind CSS ](https://tailwindcss.com/docs/guides/create-react-app) in a Create React App project.
+<center><img src="src/assets/logo.svg"></center>
+<center><h1>Momento</h1></center>
 
 
-## Installation
+# Introducing Momento
+Momento is a productivity app that allows to track the progress of your projects by adding implementations or tasks, resources and keep a track of your work time. It lets you keep focus while working and it has a leadderboard that ranks user based on number of projects completed.
 
-Clone the repository
-- `git clone https://github.com/nimalansivakumar/create-react-app-tailwindcss`
+[Read Blog](https://nimalan.hashnode.dev/introducing-momento-a-productivity-app-to-track-the-progress-of-your-projects#heading-flashback)
 
-Change your current directory
-- `cd create-react-app-tailwindcss`
+# 🚀 Demo
+<img src="src/assets/frame.jpg" />
 
-Install all the required dependencies and run 
-- `npm install`
-- `npm start`
+[Live Demo](https://momento-app.netlify.app/)
 
-## Available Scripts
+# 📄 Features
 
-In the project directory, you can run:
+- 🏗️ Projects List
+- 📃 Add Implementations 
+- 📄 Add Resources
+- ⏳ Focus on work with timer
+- 🏆 Leaderboard to rank
+- 📊 Stats of the projects
+- 📨 Share stats on Twitter
 
-### `npm start`
+# ⚒️ Tech Stack
+- ```React``` for Frontend
+- ```Tailwind CSS``` for styling
+- ```Node.js``` and ```Express.js``` for Backend
+- ```Firebase``` for Authentication
+- ```Axios``` for HTTP requests
+- ```Framer Motion``` for animations and transitions
+- ```MongoDB``` for database
+- ```Netlify``` for frontend hosting
+- ```Heroku``` for backend hosting
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+# 📲 Follow me on
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+- Twitter: [@nimalancodes](https://twitter.com/nimalancodes)
+- Hashnode: [@nimalan](https://hashnode.com/@nimalan)
 
-### `npm test`
+Leave a ⭐ if you liked and found this useful.
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
-
-### `npm run build`
-
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-## Learn More
-
-- [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-- [React documentation](https://reactjs.org/).
-- [Tailwindcss docs](https://tailwindcss.com/).
+Submission for **Netlify x Hashnode Hackathon**

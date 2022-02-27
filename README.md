@@ -3,7 +3,7 @@
     <img alt="momento" src="src/assets/logo.svg" width="125" />
   </a>
 </p>
-<h1 align="center">DevConnect.</h1>
+<h1 align="center">Momento</h1>
 
 # Introducing Momento
 

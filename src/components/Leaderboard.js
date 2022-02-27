@@ -29,7 +29,7 @@ const Leaderboard = () => {
         <h1 className="font-bold text-3xl px-10">Leaderboard</h1>
       </div>
       <div className="w-full h-full">
-        <ul className="w-full h-30rem flex flex-col items-center">
+        <ul className="w-full h-full flex flex-col items-center">
           <li className="w-11/12 h-12 my-2 bg-card rounded-xl flex flex-row items-center px-10">
             <h1 className="w-1/3 text-left">Rank</h1>
             <h1 className="w-1/3 text-center">Name</h1>
